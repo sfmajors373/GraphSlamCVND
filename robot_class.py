@@ -98,13 +98,12 @@ class robot:
             dx = self.x - self.landmarks[i][0]
             dy = self.y - self.landmarks[i][1]
             # Add noise
-            noise = random.randint(-1,1)
-            dx += noise
-            dy += noise
+            dx = dx + (self.rand() * self.measurement_noise)
+            dy = dy + (self.rand() * self.measurement_noise)
             
             
             # If both in visual range, push to measurements
-            if ((dx <= self.measurement_range) and (dy <= self.measurement_range)):
+            if ((abs(dx) <= self.measurement_range) and (abs(dy) <= self.measurement_range)):
                 measurements.append([i, dx, dy])
         return measurements
 
