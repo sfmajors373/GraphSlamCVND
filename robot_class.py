@@ -95,8 +95,8 @@ class robot:
         # Iterate through landmarks
         for i in range(self.num_landmarks):
             # Compute dx and dy
-            dx = self.x - self.landmarks[i][0]
-            dy = self.y - self.landmarks[i][1]
+            dx = self.landmarks[i][0] - self.x
+            dy = self.landmarks[i][1] - self.y
             # Add noise
             dx = dx + (self.rand() * self.measurement_noise)
             dy = dy + (self.rand() * self.measurement_noise)
